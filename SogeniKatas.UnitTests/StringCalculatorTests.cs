@@ -80,5 +80,19 @@ namespace SogeniKatas.UnitTests
             //Assert
             Assert.AreEqual(100, result);
         }
+
+        [TestMethod]
+        public void Add_PassingCustomDelimiterReturnsCorrectSum()
+        {
+            //Arrange
+            var customDelimiterString = "//[foo]\n20foo30foo50";
+
+            //Act
+            int result = StringCalculator.Add(customDelimiterString);
+
+            //Assert
+            Assert.AreEqual(100, result);
+
+        }
     }
 }
