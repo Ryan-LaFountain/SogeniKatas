@@ -14,10 +14,10 @@ namespace SogeniKatas
             string customDelimiter;
             string[] delimiters;
 
-            if (numbers.StartsWith("//["))
+            if (numbers.StartsWith("//"))
             {
-                var startIndex = 3;
-                var length = numbers.IndexOf("]") - startIndex;
+                var startIndex = 2;
+                var length = numbers.IndexOf("\n") - startIndex;
                 customDelimiter = numbers.Substring(startIndex,length);
                 numbers = numbers.Substring(numbers.IndexOf("\n") + 1);
                 delimiters = new string[] { customDelimiter };

@@ -85,7 +85,7 @@ namespace SogeniKatas.UnitTests
         public void Add_PassingCustomDelimiterReturnsCorrectSum()
         {
             //Arrange
-            var customDelimiterString = "//[foo]\n20foo30foo50";
+            var customDelimiterString = "//foo\n20foo30foo50";
 
             //Act
             int result = StringCalculator.Add(customDelimiterString);
