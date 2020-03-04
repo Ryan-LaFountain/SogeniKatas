@@ -37,6 +37,8 @@ namespace SogeniKatas
             {
                 int num = Convert.ToInt32(number);
 
+                if (num > 1000)
+                    continue;
                 if (num < 0)
                     negativeNumbers.Add(num);
                 else

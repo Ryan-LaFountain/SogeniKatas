@@ -150,5 +150,20 @@ namespace SogeniKatas.UnitTests
 
 
         }
+
+        [TestMethod]
+        public void Add_PassingNumberGreaterThan1000Ignored()
+        {
+            //Arrange
+            var numberString1000 = "//foo\n1000foo1001";
+
+            //Act
+            int result = StringCalculator.Add(numberString1000);
+
+            //Assert
+            Assert.AreEqual(1000, result);
+        }
+
+
     }
 }
