@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SogeniKatas
@@ -13,6 +14,7 @@ namespace SogeniKatas
 
             string customDelimiter;
             string[] delimiters;
+            List<int> negativeNumbers = new List<int>();
 
             if (numbers.StartsWith("//"))
             {
@@ -33,8 +35,16 @@ namespace SogeniKatas
 
             foreach(var number in numbersArray)
             {
-                result += Convert.ToInt32(number);
+                int num = Convert.ToInt32(number);
+
+                if (num < 0)
+                    negativeNumbers.Add(num);
+                else
+                    result += num;
             }
+
+            if (negativeNumbers.Count > 0)
+                throw new ArgumentOutOfRangeException("numbers",$"negatives not allowed: {string.Join(",",negativeNumbers.Select(neg => neg.ToString()))}");
 
             return result;
         }

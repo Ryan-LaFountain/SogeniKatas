@@ -94,5 +94,61 @@ namespace SogeniKatas.UnitTests
             Assert.AreEqual(100, result);
 
         }
+
+        [TestMethod]
+        public void Add_PassingNegativeNumberThrowsArgumentOutofRangeException()
+        {
+            //Arrange
+            var negativeNumberString = "//foo\n-20foo30foo-50";
+
+            //Act & Assert
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
+            {
+                StringCalculator.Add(negativeNumberString);
+            });
+
+        }
+
+        [TestMethod]
+        public void Add_PassingNegativeNumberThrowsProperlyFormattedExceptionMessage()
+        {
+            //Arrange
+            var customDelimiterString = "//foo\n-20foo30foo50";
+
+            //Act
+            try
+            {
+                int result = StringCalculator.Add(customDelimiterString);
+                Assert.Fail();
+            }
+            catch(ArgumentOutOfRangeException ex)
+            {
+                //Assert
+                Assert.AreEqual("negatives not allowed: -20 (Parameter 'numbers')", ex.Message);
+            }
+
+
+        }
+
+        [TestMethod]
+        public void Add_PassingMultipleNegativeNumberThrowsProperlyFormattedExceptionMessage()
+        {
+            //Arrange
+            var customDelimiterString = "//foo\n-20foo30foo-50foo-43";
+
+            //Act
+            try
+            {
+                int result = StringCalculator.Add(customDelimiterString);
+                Assert.Fail();
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                //Assert
+                Assert.AreEqual("negatives not allowed: -20,-50,-43 (Parameter 'numbers')", ex.Message);
+            }
+
+
+        }
     }
 }
