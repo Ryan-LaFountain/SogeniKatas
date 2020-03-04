@@ -109,5 +109,44 @@ namespace SogetiKatas.UnitTests
             Assert.AreEqual("fizz buzz pop", test2);
             Assert.AreEqual("fizz buzz pop", test3);
         }
+
+        [TestMethod]
+        public void EvaluateNumber_CustomGameWhenMultipleOfTwoSelectedFuzzIsReturned()
+        {
+            //Arrange
+            var game = new FizzBuzzGame(GameType.Custom);
+            game.AddCustomGameRule(2, "fuzz");
+
+            //Act
+            string test1 = game.EvaluateNumber(1);
+            string test2 = game.EvaluateNumber(2);
+            string test3 = game.EvaluateNumber(8);
+
+
+            //Assert
+            Assert.AreEqual("1", test1);
+            Assert.AreEqual("fuzz", test2);
+            Assert.AreEqual("fuzz", test3);
+        }
+
+        [TestMethod]
+        public void EvaluateNumber_TwoCustomGameRulesReturnCorrectResult()
+        {
+            //Arrange
+            var game = new FizzBuzzGame(GameType.Custom);
+            game.AddCustomGameRule(2, "fuzz");
+            game.AddCustomGameRule(3, "bizz");
+
+            //Act
+            string test1 = game.EvaluateNumber(4);
+            string test2 = game.EvaluateNumber(9);
+            string test3 = game.EvaluateNumber(12);
+
+
+            //Assert
+            Assert.AreEqual("fuzz", test1);
+            Assert.AreEqual("bizz", test2);
+            Assert.AreEqual("fuzz bizz", test3);
+        }
     }
 }

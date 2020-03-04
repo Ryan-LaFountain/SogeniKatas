@@ -8,8 +8,46 @@ namespace SogetiKatas
         static void Main(string[] args)
         {
             bool active = true;
-            var game = new FizzBuzzGame(GameType.FizzBuzz);
+            
             Console.WriteLine("Welcome to FizzBuzz!");
+            Console.WriteLine("Select a Game Mode:");
+            Console.WriteLine("Fizz Buzz - 1");
+            Console.WriteLine("Fizz Buzz Pop - 2");
+            Console.WriteLine("Custom - 3");
+
+            //Assuming valid input for brevity
+
+            GameType gameType = (GameType)int.Parse(Console.ReadLine());
+
+            Console.WriteLine($"{Enum.GetName(typeof(GameType), gameType)} selected");
+
+            var game = new FizzBuzzGame(gameType);
+
+            if(gameType == GameType.Custom)
+            {
+                bool yes = true;
+
+                while (yes)
+                {
+                    Console.WriteLine("Add Custom Game Rules.");
+                    Console.WriteLine("Enter multiple");
+
+                    int multiple = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Enter output when number is a multiple");
+
+                    string output = Console.ReadLine();
+
+                    game.AddCustomGameRule(multiple, output);
+
+                    Console.WriteLine("Rule Successfully Added");
+                    Console.WriteLine("Add More Rules? 'Y' for Yes 'N' for No");
+
+                    yes = Console.ReadLine().Equals("Y", StringComparison.InvariantCultureIgnoreCase);
+
+                }
+                
+            }
             while (active)
             {
                 Console.WriteLine("Enter a number.");

@@ -6,8 +6,8 @@ namespace SogetiKatas.FbGame
 {
     public enum GameType
     {
-        FizzBuzz,
-        FizzBuzzPop,
-        Custom
+        FizzBuzz = 1,
+        FizzBuzzPop = 2,
+        Custom = 3
     }
 }

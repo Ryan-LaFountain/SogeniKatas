@@ -18,7 +18,7 @@ namespace SogetiKatas.FbGame.Rules
 
         public bool Is(int number)
         {
-            throw new NotImplementedException();
+            return number % _multiple == 0;
         }
     }
 }

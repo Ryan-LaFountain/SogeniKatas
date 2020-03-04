@@ -56,6 +56,8 @@ namespace SogetiKatas
         {
             if (_gameType != GameType.Custom)
                 throw new Exception("Game Mode must be custom to add custom game rules.");
+
+            _gameRules.Add(new CustomRule(multiple, output));
         }
 
     }
