@@ -1,7 +1,7 @@
-﻿using SogeniKatas.FbGame;
+﻿using SogetiKatas.FbGame;
 using System;
 
-namespace SogeniKatas
+namespace SogetiKatas
 {
     class Program
     {

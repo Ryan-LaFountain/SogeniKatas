@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SogeniKatas.FbGame;
+using SogetiKatas.FbGame;
 
-namespace SogeniKatas.UnitTests
+namespace SogetiKatas.UnitTests
 {
     [TestClass]
     public class FizzBuzzTests

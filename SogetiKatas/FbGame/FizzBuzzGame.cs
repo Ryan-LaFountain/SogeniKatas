@@ -1,10 +1,9 @@
-﻿using SogeniKatas.FbGame;
-using SogeniKatas.FbGame.Rules;
-using SogeniKatas.FBGame.Rules;
+﻿using SogetiKatas.FbGame;
+using SogetiKatas.FbGame.Rules;
 using System;
 using System.Collections.Generic;
 
-namespace SogeniKatas
+namespace SogetiKatas
 {
     public class FizzBuzzGame
     {
@@ -18,9 +17,8 @@ namespace SogeniKatas
                 case GameType.FizzBuzzPop:
                     _gameRules = new List<IFizzBuzzRule>()
                     {
-                        new FizzBuzzPop(),
-                        new BuzzPop(),
-                        new FizzPop(),
+                        new Fizz(),
+                        new Buzz(),
                         new Pop()
                     };
                     break;
@@ -31,9 +29,8 @@ namespace SogeniKatas
                 default:
                     _gameRules = new List<IFizzBuzzRule>()
                     {
-                        new FizzBuzz(),
                         new Fizz(),
-                        new Buzz(),
+                        new Buzz()
                     };
                     break;
             }
@@ -41,13 +38,18 @@ namespace SogeniKatas
         }
         public string EvaluateNumber(int number)
         {
+            List<string> outputs = new List<string>();
+
             foreach(var rule in _gameRules)
             {
                 if (rule.Is(number))
-                    return rule.Output;
+                    outputs.Add(rule.Output);
             }
 
-            return number.ToString();
+            if(outputs.Count == 0)
+                return number.ToString();
+
+            return string.Join(" ", outputs);
         }
 
         public void AddCustomGameRule(int multiple, string output)
@@ -56,9 +58,5 @@ namespace SogeniKatas
                 throw new Exception("Game Mode must be custom to add custom game rules.");
         }
 
-        private Exception Exception(string v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

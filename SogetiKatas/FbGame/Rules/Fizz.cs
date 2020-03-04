@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SogeniKatas.FbGame.Rules
+namespace SogetiKatas.FbGame.Rules
 {
     public class Fizz : IFizzBuzzRule
     {
