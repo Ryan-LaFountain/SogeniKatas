@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace SogeniKatas
 {
@@ -12,17 +13,15 @@ namespace SogeniKatas
             if (String.IsNullOrWhiteSpace(numbers))
                 return 0;
 
-            string customDelimiter;
             string[] delimiters;
             List<int> negativeNumbers = new List<int>();
-
+            
             if (numbers.StartsWith("//"))
             {
-                var startIndex = 2;
-                var length = numbers.IndexOf("\n") - startIndex;
-                customDelimiter = numbers.Substring(startIndex,length);
+                var regex = new Regex(@"\[(.*?)\]");
+                var matches = regex.Matches(numbers);
+                delimiters = matches.Select(match => match.Groups[1].Value).ToArray();
                 numbers = numbers.Substring(numbers.IndexOf("\n") + 1);
-                delimiters = new string[] { customDelimiter };
             }
             else
             {
@@ -39,6 +38,7 @@ namespace SogeniKatas
 
                 if (num > 1000)
                     continue;
+
                 if (num < 0)
                     negativeNumbers.Add(num);
                 else
@@ -46,7 +46,7 @@ namespace SogeniKatas
             }
 
             if (negativeNumbers.Count > 0)
-                throw new ArgumentOutOfRangeException("numbers",$"negatives not allowed: {string.Join(",",negativeNumbers.Select(neg => neg.ToString()))}");
+                throw new ArgumentOutOfRangeException("numbers", $"negatives not allowed: {string.Join(",",negativeNumbers.Select(neg => neg.ToString()))}");
 
             return result;
         }

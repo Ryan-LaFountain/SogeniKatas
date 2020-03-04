@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace SogeniKatas.UnitTests
 {
@@ -85,7 +86,7 @@ namespace SogeniKatas.UnitTests
         public void Add_PassingCustomDelimiterReturnsCorrectSum()
         {
             //Arrange
-            var customDelimiterString = "//foo\n20foo30foo50";
+            var customDelimiterString = "//[foo]\n20foo30foo50";
 
             //Act
             int result = StringCalculator.Add(customDelimiterString);
@@ -99,7 +100,7 @@ namespace SogeniKatas.UnitTests
         public void Add_PassingNegativeNumberThrowsArgumentOutofRangeException()
         {
             //Arrange
-            var negativeNumberString = "//foo\n-20foo30foo-50";
+            var negativeNumberString = "//[foo]\n-20foo30foo-50";
 
             //Act & Assert
             Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
@@ -113,7 +114,7 @@ namespace SogeniKatas.UnitTests
         public void Add_PassingNegativeNumberThrowsProperlyFormattedExceptionMessage()
         {
             //Arrange
-            var customDelimiterString = "//foo\n-20foo30foo50";
+            var customDelimiterString = "//[foo]\n-20foo30foo50";
 
             //Act
             try
@@ -134,7 +135,7 @@ namespace SogeniKatas.UnitTests
         public void Add_PassingMultipleNegativeNumberThrowsProperlyFormattedExceptionMessage()
         {
             //Arrange
-            var customDelimiterString = "//foo\n-20foo30foo-50foo-43";
+            var customDelimiterString = "//[foo]\n-20foo30foo-50foo-43";
 
             //Act
             try
@@ -155,13 +156,41 @@ namespace SogeniKatas.UnitTests
         public void Add_PassingNumberGreaterThan1000Ignored()
         {
             //Arrange
-            var numberString1000 = "//foo\n1000foo1001";
+            var numberString1000 = "//[foo]\n1000foo1001";
 
             //Act
             int result = StringCalculator.Add(numberString1000);
 
             //Assert
             Assert.AreEqual(1000, result);
+        }
+
+        [TestMethod]
+        public void Add_DelimitersBetweenBracketsOnFirstLineUsed()
+        {
+            //Arrange
+            var bracketDelimiter = "//[&$]\n1&$2&$3";
+
+            //Act
+            var result = StringCalculator.Add(bracketDelimiter);
+
+            //Assert
+            Assert.AreEqual(6, result);
+
+        }
+
+        [TestMethod]
+        public void Add_MultipleBraketDelimitersWithMultipleCharactersReturnCorrectSum()
+        {
+            //Arrange
+            var bracketDelimiter = "//[&&][**]\n1&&2**3";
+
+            //Act
+            var result = StringCalculator.Add(bracketDelimiter);
+
+            //Assert
+            Assert.AreEqual(6, result);
+
         }
 
 
