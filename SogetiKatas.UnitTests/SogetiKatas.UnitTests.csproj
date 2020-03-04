@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SogeniKatas\SogeniKatas.csproj" />
+    <ProjectReference Include="..\SogetiKatas\SogetiKatas.csproj" />
   </ItemGroup>
 
 </Project>

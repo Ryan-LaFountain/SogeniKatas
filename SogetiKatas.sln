@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SogeniKatas", "SogeniKatas\SogeniKatas.csproj", "{03D65CFF-C882-4EDA-BF2E-8638726FE2B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SogetiKatas", "SogetiKatas\SogetiKatas.csproj", "{03D65CFF-C882-4EDA-BF2E-8638726FE2B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SogeniKatas.UnitTests", "SogeniKatas.UnitTests\SogeniKatas.UnitTests.csproj", "{9B544F24-DDCC-403B-8EA6-1E43BB7C6DD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SogetiKatas.UnitTests", "SogetiKatas.UnitTests\SogetiKatas.UnitTests.csproj", "{9B544F24-DDCC-403B-8EA6-1E43BB7C6DD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

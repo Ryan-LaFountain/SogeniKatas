@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SogeniKatas.FbGame;
+using System;
 
 namespace SogeniKatas
 {
@@ -7,6 +8,7 @@ namespace SogeniKatas
         static void Main(string[] args)
         {
             bool active = true;
+            var game = new FizzBuzzGame(GameType.FizzBuzz);
             Console.WriteLine("Welcome to FizzBuzz!");
             while (active)
             {
@@ -29,7 +31,7 @@ namespace SogeniKatas
                     Console.ReadLine();
                 }
 
-                string output = FizzBuzz.EvaluateNumber(number);
+                string output = game.EvaluateNumber(number);
 
                 Console.WriteLine(output);
             }
