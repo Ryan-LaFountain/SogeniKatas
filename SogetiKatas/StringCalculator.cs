@@ -13,9 +13,18 @@ namespace SogetiKatas
             if (String.IsNullOrWhiteSpace(numbers))
                 return 0;
 
+            string[] delimiters = GetDelimiters(ref numbers);
+
+            string[] numbersArray = numbers.Split(delimiters, StringSplitOptions.None);
+
+            return SumNumbers(numbersArray);
+        }
+
+        private static string[] GetDelimiters(ref string numbers)
+        {
             string[] delimiters;
-            List<int> negativeNumbers = new List<int>();
-            
+
+
             if (numbers.StartsWith("//"))
             {
                 var regex = new Regex(@"\[(.*?)\]");
@@ -28,13 +37,16 @@ namespace SogetiKatas
                 delimiters = new string[] { ",", "\n" };
             }
 
-            string[] numbersArray = numbers.Split(delimiters, StringSplitOptions.None);
-
+            return delimiters;
+        }
+        private static int SumNumbers(string[] numbersArray)
+        {
             int result = 0;
 
-            foreach(var number in numbersArray)
+            List<int> negativeNumbers = new List<int>();
+            foreach (var number in numbersArray)
             {
-                int num = Convert.ToInt32(number);
+                int num = int.Parse(number);
 
                 if (num > 1000)
                     continue;
@@ -46,7 +58,7 @@ namespace SogetiKatas
             }
 
             if (negativeNumbers.Count > 0)
-                throw new ArgumentOutOfRangeException("numbers", $"negatives not allowed: {string.Join(",",negativeNumbers.Select(neg => neg.ToString()))}");
+                throw new ArgumentOutOfRangeException("numbers", $"negatives not allowed: {string.Join(",", negativeNumbers.Select(neg => neg.ToString()))}");
 
             return result;
         }

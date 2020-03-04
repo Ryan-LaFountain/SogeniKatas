@@ -16,7 +16,6 @@ namespace SogetiKatas
             Console.WriteLine("Custom - 3");
 
             //Assuming valid input for brevity
-
             GameType gameType = (GameType)int.Parse(Console.ReadLine());
 
             Console.WriteLine($"{Enum.GetName(typeof(GameType), gameType)} selected");
